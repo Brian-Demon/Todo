@@ -29,7 +29,7 @@ class TodoCLI < Thor
     config = {
       database: File.open(File.expand_path(options[:database]), "a+")
     }
-    Todo::Manager.new(config).add(item)
+    Todo::Manager.new(config).remove(item)
   end #remove
 end #TodoCLI
 
