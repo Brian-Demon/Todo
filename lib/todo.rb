@@ -18,5 +18,9 @@ module Todo
     def add(item)
       database.write(item, "\n")
     end
+
+    def get_contents
+      database.map(&:chomp)
+    end
   end
 end
