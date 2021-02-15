@@ -8,19 +8,17 @@ class TodoTest < Minitest::Test
     refute_nil ::Todo::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
-  end
-
   def test_add_adds_item
-    test_file = StringIO.new("First", "a+")
+    test_file = StringIO.new()
+    test_file.write("First", "\n")
     config = {
       database: test_file
     }
     test_manager = Todo::Manager.new(config)
     item = "Second"
     test_manager.add(item)
-    results = test_file.rewind
+    test_file.rewind
+    results = test_file.read
     expected = "First\nSecond\n"
     assert_equal(expected, results)
   end
