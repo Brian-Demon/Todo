@@ -14,7 +14,7 @@ class TodoCLI < Thor
     Todo::Manager.new(config).add(item)
   end #add
 
-  desc("display [LIST]", "displays the current todo list")
+  desc("display", "displays the current todo list")
   option :database, default: "~/.todo"
   def display
     config = {
