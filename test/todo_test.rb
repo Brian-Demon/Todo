@@ -22,4 +22,18 @@ class TodoTest < Minitest::Test
     expected = "First\nSecond\n"
     assert_equal(expected, results)
   end
+
+  def test_display
+    test_file = StringIO.new()
+    test_file.write("Stuff", "\n")
+    test_file.write("More Stuff", "\n")
+    config = {
+      database: test_file
+    }
+    test_manager = Todo::Manager.new(config)
+    test_file.rewind
+    results = test_manager.display
+    expected = "Stuff\nMore Stuff\n"
+    assert_equal(expected, results)
+  end
 end

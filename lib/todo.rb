@@ -18,5 +18,9 @@ module Todo
     def add(item)
       database.write(item, "\n")
     end
+
+    def display
+      database.read
+    end
   end
 end
