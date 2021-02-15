@@ -19,8 +19,18 @@ module Todo
       database.write(item, "\n")
     end
 
+    def remove(item)
+      database.each do |line|
+        
+      end
+    end
+
     def display
-      database.read
+      database_contents = []
+      database.each do |line|
+        database_contents << line.chomp
+      end
+      database_contents
     end
   end
 end

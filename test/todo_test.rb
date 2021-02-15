@@ -33,7 +33,7 @@ class TodoTest < Minitest::Test
     test_manager = Todo::Manager.new(config)
     test_file.rewind
     results = test_manager.display
-    expected = "Stuff\nMore Stuff\n"
+    expected = ["Stuff", "More Stuff"]
     assert_equal(expected, results)
   end
 end
