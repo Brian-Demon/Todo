@@ -20,11 +20,7 @@ module Todo
     end
 
     def display
-      database_contents = []
-      database.each do |line|
-        database_contents << line.chomp
-      end
-      database_contents
+      database.map(&:chomp)
     end
   end
 end
