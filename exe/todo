@@ -7,14 +7,6 @@ require "todo"
 class TodoCLI < Thor
   desc("add [ITEM]", "adds item to list")
   option :database, default: "~/.todo"
-
-  def display
-    config = {
-      database: File.open(File.expand_path(options[:database]), "a+")
-    }
-    puts "\n#{Todo::Manager.new(config).display}\n"
-  end
-
   def add(item)
     config = {
       database: File.open(File.expand_path(options[:database]), "a+")
@@ -22,6 +14,17 @@ class TodoCLI < Thor
     Todo::Manager.new(config).add(item)
   end #add
 
+  desc("display [LIST]", "displays the current todo list")
+  option :database, default: "~/.todo"
+  def display
+    config = {
+      database: File.open(File.expand_path(options[:database]), "a+")
+    }
+    puts "\n#{Todo::Manager.new(config).display}\n"
+  end
+
+  desc("remove [ITEM]", "removes item from list")
+  option :database, default: "~/.todo"
   def remove(item)
     config = {
       database: File.open(File.expand_path(options[:database]), "a+")
