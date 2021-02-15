@@ -19,7 +19,7 @@ module Todo
       database.write(item, "\n")
     end
 
-    def display
+    def get_contents
       database.map(&:chomp)
     end
   end
