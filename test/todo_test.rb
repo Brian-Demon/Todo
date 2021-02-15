@@ -23,7 +23,7 @@ class TodoTest < Minitest::Test
     assert_equal(expected, results)
   end
 
-  def test_display
+  def test_get_contents
     test_file = StringIO.new()
     test_file.write("Stuff", "\n")
     test_file.write("More Stuff", "\n")
@@ -32,7 +32,7 @@ class TodoTest < Minitest::Test
     }
     test_manager = Todo::Manager.new(config)
     test_file.rewind
-    results = test_manager.display
+    results = test_manager.get_contents
     expected = ["Stuff", "More Stuff"]
     assert_equal(expected, results)
   end
