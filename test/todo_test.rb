@@ -22,4 +22,21 @@ class TodoTest < Minitest::Test
     expected = "First\nSecond\n"
     assert_equal(expected, results)
   end
-end
+
+  def test_remove_removes_item
+    test_file = StringIO.new
+    test_file.write("First", "\n")
+    test_file.write("Banana", "\n")
+    test_file.write("Second", "\n")
+    config = {
+      database: test_file
+    }
+    test_manager = Todo::Manager.new(config)
+    item = "Banana"
+    test_manager.remove(item)
+    test_file.rewind
+    results = test_file.read
+    expected = "First\nSecond\n"
+    assert_equal(expected, results)
+  end
+end #TodoTest
