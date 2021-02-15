@@ -20,9 +20,14 @@ module Todo
     end #add
 
     def remove(item)
-      puts "\nDatabase: #{database.read}\n\n"
+      database.rewind
+      # puts "\nDatabase: #{database.read}\n\n"
       database.each_line do |line|
-        puts "#{database.lineno}: #{line}"
+        if line.chomp == item
+          # puts "MATCH FOUND: #{database.lineno}"
+          database.seek(0-line.length*2, IO::SEEK_END)
+          database.write("      ")
+        end
       end
     end #add
 
