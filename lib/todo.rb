@@ -19,10 +19,19 @@ module Todo
       database.map(&:chomp)
     end #get_contents
 
+    def display
+      current_data = get_contents
+      display = "Current Todo List:"
+      current_data.map.with_index do |element, index|
+        display += "\n#{index+1}. #{element}"
+      end
+      display += "\n"
+      display
+    end
+
     def add(item)
       database.write(item, "\n")
     end #add
-
     
   end #Manager
 end #Todo
