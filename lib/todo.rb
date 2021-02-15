@@ -15,12 +15,14 @@ module Todo
       @config[:database]
     end #database
 
+    def get_contents
+      database.map(&:chomp)
+    end #get_contents
+
     def add(item)
       database.write(item, "\n")
     end #add
 
-    def get_contents
-      database.map(&:chomp)
-    end #get_contents
+    
   end #Manager
 end #Todo
