@@ -13,7 +13,14 @@ class TodoCLI < Thor
       database: File.open(File.expand_path(options[:database]), "a+")
     }
     Todo::Manager.new(config).add(item)
-  end
-end
+  end #add
+
+  def remove(item)
+    config = {
+      database: File.open(File.expand_path(options[:database]), "a+")
+    }
+    Todo::Manager.new(config).add(item)
+  end #remove
+end #TodoCLI
 
 TodoCLI.start(ARGV)

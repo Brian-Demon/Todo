@@ -36,4 +36,4 @@ class TodoTest < Minitest::Test
     expected = ["Stuff", "More Stuff"]
     assert_equal(expected, results)
   end
-end
+end #TodoTest
