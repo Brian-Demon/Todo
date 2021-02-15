@@ -4,23 +4,23 @@ require_relative "todo/version"
 
 module Todo
   class Error < StandardError
-  end
+  end #Error
 
   class Manager
     def initialize(config)
       @config = config
-    end
+    end #initialize
 
     def database
       @config[:database]
-    end
+    end #database
 
     def add(item)
       database.write(item, "\n")
-    end
+    end #add
 
     def get_contents
       database.map(&:chomp)
-    end
-  end
-end
+    end #get_contents
+  end #Manager
+end #Todo
