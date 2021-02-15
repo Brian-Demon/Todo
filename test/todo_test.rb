@@ -9,7 +9,7 @@ class TodoTest < Minitest::Test
   end
 
   def test_add_adds_item
-    test_file = StringIO.new()
+    test_file = StringIO.new
     test_file.write("First", "\n")
     config = {
       database: test_file
