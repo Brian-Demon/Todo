@@ -20,7 +20,6 @@ module Todo
     end #contents
 
     def get_contents
-      database.rewind
       database.map(&:chomp)
     end #get_contents
 
