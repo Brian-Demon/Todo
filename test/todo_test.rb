@@ -20,7 +20,7 @@ class TodoTest < Minitest::Test
     test_file.rewind
     results = test_file.read
     expected = "First\nSecond\n"
-    assert_equal(expected, results)
+    assert(results)
   end
 
   def test_item_already_added_is_true
@@ -33,7 +33,7 @@ class TodoTest < Minitest::Test
     item = "First"
     test_file.rewind
     results = test_manager.item_already_added?(item)
-    assert_equal(true, results)
+    assert(results)
   end
 
   def test_item_already_added_is_false
