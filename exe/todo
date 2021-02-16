@@ -27,7 +27,7 @@ class TodoCLI < Thor
       database: File.open(File.expand_path(options[:database]), "a+")
     }
     puts "\n#{Todo::Manager.new(config).display}\n"
-  end
+  end #display
 
   desc("remove [ITEM]", "removes item from list")
   option :database, default: "~/.todo"

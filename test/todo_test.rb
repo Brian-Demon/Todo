@@ -49,6 +49,19 @@ class TodoTest < Minitest::Test
     refute(results)
   end
 
+  def test_item_already_added_is_true_check_for_case
+    test_file = StringIO.new
+    test_file.write("First", "\n")
+    config = {
+      database: test_file
+    }
+    test_manager = Todo::Manager.new(config)
+    item = "fiRst"
+    test_file.rewind
+    results = test_manager.item_already_added?(item)
+    assert(results)
+  end
+
   def test_get_contents
     test_file = StringIO.new()
     test_file.write("Stuff", "\n")

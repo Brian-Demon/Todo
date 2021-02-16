@@ -15,6 +15,10 @@ module Todo
       @config[:database]
     end #database
 
+    def contents
+      @contents = get_contents
+    end #contents
+
     def get_contents
       database.map(&:chomp)
     end #get_contents
@@ -27,12 +31,12 @@ module Todo
       end
       display += "\n"
       display
-    end
+    end #display
 
     def item_already_added?(item)
-      current_data = get_contents
-      !!current_data.index(item)
-    end
+      current_data = get_contents.map(&:downcase)
+      !!current_data.index(item.downcase)
+    end #item_already_added?
 
     def add(item)
       database.write(item, "\n")
