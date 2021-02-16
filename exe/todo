@@ -11,7 +11,7 @@ class TodoCLI < Thor
     config = {
       database: File.open(File.expand_path(options[:database]), "a+")
     }
-    manager = Todo::Manager.new(config);
+    manager = Todo::Manager.new(config)
     if manager.item_already_added?(item)
       response = ask "\"#{item}\" is already in the list. Add it again? [y/n]:".to_s
       return if response.downcase != "y"
