@@ -48,8 +48,7 @@ module Todo
     end #remove
 
     def valid_removal?(response)
-      return false unless response.length == 1 && response.match?(/\d/) && response.to_i > 0 && response.to_i < get_contents.length + 1
-      return true
+      (1..contents.length+1).member?(response.to_i)
     end #valid_removal?
 
   end #Manager
