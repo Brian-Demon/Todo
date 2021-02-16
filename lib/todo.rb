@@ -29,6 +29,11 @@ module Todo
       display
     end
 
+    def item_already_added?(item)
+      current_data = get_contents
+      return true if current_data.index(item) != nil
+    end
+
     def add(item)
       database.write(item, "\n")
     end #add
