@@ -28,7 +28,7 @@ module Todo
     end
 
     def display
-      current_data = get_contents
+      current_data = contents
       display = "Current Todo List:"
       current_data.map.with_index do |element, index|
         display += "\n#{index+1}. #{element}"
