@@ -24,8 +24,12 @@ module Todo
       database.map(&:chomp)
     end #get_contents
 
+    def is_empty?
+      contents.empty?
+    end
+
     def display
-      current_data = get_contents
+      current_data = contents
       display = "Current Todo List:"
       current_data.map.with_index do |element, index|
         display += "\n#{index+1}. #{element}"
@@ -46,6 +50,10 @@ module Todo
     def remove(item)
       #@TODO: Create remove functionality
     end #remove
+
+    def clear
+      database.truncate(0)
+    end #clear
 
     def valid_removal?(response)
       (1..contents.length).member?(response.to_i)

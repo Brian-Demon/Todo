@@ -95,6 +95,20 @@ class TodoTest < Minitest::Test
     assert_equal(expected, results)
   end
 
+  def test_clear_and_is_empty
+    test_file = StringIO.new()
+    test_file.write("Go to bank", "\n")
+    test_file.write("Get flowers for spouse", "\n")
+    test_file.write("Take over the world", "\n")
+    config = {
+      database: test_file
+    }
+    test_manager = Todo::Manager.new(config)
+    test_file.rewind
+    test_manager.clear
+    assert(test_manager.is_empty?)
+  end
+  
   def test_valid_removal_non_numbers_fail
     test_file = StringIO.new()
     config = {
