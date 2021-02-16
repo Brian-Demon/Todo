@@ -20,8 +20,13 @@ module Todo
     end #contents
 
     def get_contents
+      database.rewind
       database.map(&:chomp)
     end #get_contents
+
+    def is_empty?
+      get_contents.empty?
+    end
 
     def display
       current_data = get_contents
@@ -45,6 +50,10 @@ module Todo
     def remove(item)
       #@TODO: Create remove functionality
     end #remove
+
+    def clear
+      database.truncate(0)
+    end #clear
 
   end #Manager
 end #Todo
