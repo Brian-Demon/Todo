@@ -32,6 +32,7 @@ module Todo
     def item_already_added?(item)
       current_data = get_contents
       return true if current_data.index(item) != nil
+      return false
     end
 
     def add(item)
