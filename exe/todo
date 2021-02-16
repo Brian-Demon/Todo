@@ -36,7 +36,7 @@ class TodoCLI < Thor
       database: File.open(File.expand_path(options[:database]), "a+")
     }
     manager = Todo::Manager.new(config)
-    puts "\n\n#{manager.display.display}"
+    puts "\n\n#{manager.display}"
     response = ask("Item to remove (#): ")
     if !manager.valid_removal?(response)
       puts "\n\"#{response}\" is not a valid input\n\n"
