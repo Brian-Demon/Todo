@@ -94,4 +94,51 @@ class TodoTest < Minitest::Test
     expected += "\n"
     assert_equal(expected, results)
   end
+
+  def test_valid_removal_non_numbers_fail
+    test_file = StringIO.new()
+    config = {
+      database: test_file
+    }
+    test_manager = Todo::Manager.new(config)
+    response = "D"
+    results = test_manager.valid_removal?(response)
+    refute(results)
+  end
+
+  def test_valid_removal_multicharacter_response_fails
+    test_file = StringIO.new()
+    config = {
+      database: test_file
+    }
+    test_manager = Todo::Manager.new(config)
+    response = "1D"
+    results = test_manager.valid_removal?(response)
+    refute(results)
+  end
+
+  def test_valid_removal_number_too_small
+    test_file = StringIO.new()
+    config = {
+      database: test_file
+    }
+    test_manager = Todo::Manager.new(config)
+    response = "0"
+    results = test_manager.valid_removal?(response)
+    refute(results)
+  end
+
+  def test_valid_removal_number_too_large
+    test_file = StringIO.new()
+    test_file.write("Go to bank", "\n")
+    test_file.write("Get flowers for spouse", "\n")
+    test_file.write("Take over the world", "\n")
+    config = {
+      database: test_file
+    }
+    test_manager = Todo::Manager.new(config)
+    response = (test_manager.contents.length + 1).to_s
+    results = test_manager.valid_removal?(response)
+    refute(results)
+  end
 end #TodoTest

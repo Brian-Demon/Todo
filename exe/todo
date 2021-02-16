@@ -13,7 +13,7 @@ class TodoCLI < Thor
     }
     manager = Todo::Manager.new(config)
     if manager.item_already_added?(item)
-      response = ask "\"#{item}\" is already in the list. Add it again? [y/n]:".to_s
+      response = ask("\"#{item}\" is already in the list. Add it again? [y/n]:".to_s)
       return if response.downcase != "y"
     end
     manager.add(item)
@@ -29,14 +29,19 @@ class TodoCLI < Thor
     puts "\n#{Todo::Manager.new(config).display}\n"
   end #display
 
-  desc("remove [ITEM]", "removes item from list")
+  desc("remove", "removes item from list based on list number")
   option :database, default: "~/.todo"
-  def remove(item)
+  def remove
     config = {
       database: File.open(File.expand_path(options[:database]), "a+")
     }
-    #Todo::Manager.new(config).remove(item)
-    puts "Coming soon..."
+    manager = Todo::Manager.new(config)
+    puts "\n\n#{manager.display}"
+    response = ask("Item to remove (#): ")
+    if !manager.valid_removal?(response)
+      puts "\n\"#{response}\" is not a valid input\n\n"
+    end
+    puts "\n\n#{manager.get_contents.length}\n\n"
   end #remove
 end #TodoCLI
 
