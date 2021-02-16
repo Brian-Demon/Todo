@@ -137,7 +137,7 @@ class TodoTest < Minitest::Test
       database: test_file
     }
     test_manager = Todo::Manager.new(config)
-    response = (test_manager.get_contents.length + 1).to_s
+    response = (test_manager.contents.length + 1).to_s
     results = test_manager.valid_removal?(response)
     refute(results)
   end
