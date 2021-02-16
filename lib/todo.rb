@@ -24,7 +24,7 @@ module Todo
     end #get_contents
 
     def is_empty?
-      get_contents.empty?
+      contents.empty?
     end
 
     def display
