@@ -16,7 +16,7 @@ module Todo
     end #database
 
     def contents
-      @contents = get_contents
+      @contents ||= get_contents
     end #contents
 
     def get_contents
