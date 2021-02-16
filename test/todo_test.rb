@@ -46,7 +46,7 @@ class TodoTest < Minitest::Test
     item = "Second"
     test_file.rewind
     results = test_manager.item_already_added?(item)
-    assert_equal(false, results)
+    refute(results)
   end
 
   def test_get_contents
