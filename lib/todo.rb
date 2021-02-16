@@ -33,5 +33,9 @@ module Todo
       database.write(item, "\n")
     end #add
     
+    def remove(item)
+      #@TODO: Create remove functionality
+    end #remove
+
   end #Manager
 end #Todo
