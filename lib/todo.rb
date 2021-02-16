@@ -48,7 +48,7 @@ module Todo
     end #remove
 
     def valid_removal?(response)
-      (1..contents.length+1).member?(response.to_i)
+      (1..contents.length).member?(response.to_i)
     end #valid_removal?
 
   end #Manager
