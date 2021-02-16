@@ -20,6 +20,7 @@ module Todo
     end #contents
 
     def get_contents
+      database.rewind
       database.map(&:chomp)
     end #get_contents
 
@@ -45,6 +46,11 @@ module Todo
     def remove(item)
       #@TODO: Create remove functionality
     end #remove
+
+    def valid_removal?(response)
+      return false unless response.length == 1 && response.match?(/\d/) && response.to_i > 0 && response.to_i < get_contents.length + 1
+      return true
+    end #valid_removal?
 
   end #Manager
 end #Todo
